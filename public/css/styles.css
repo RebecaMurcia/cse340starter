@@ -1,6 +1,102 @@
-/******* Change Box Model ***************/
+/* style for whole page */
+:root{
+  --primary-color:#fff;
+  --secondary-color:rgb(0, 0, 0);
+  --third-color: #4c96d7;
+}
+html{
+  box-sizing: border-box;
+}
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+  box-sizing:inherit;
+}
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5em;
+  background-image: url("../images/site/checkerboard.jpg");
+}
+.page{
+  max-width: 100%;
+  background-color:var(--primary-color);
+}
+/* styling header */
+header{
+  padding: 20px;
+}
+/* styling navigation */
+nav{
+  clear:both;
+  font-size: 0.5em;
+}
+nav ul{
+  display: flex;
+  background-color:var(--secondary-color);
+  list-style-type: none;
+  margin:0;
+  padding: 0;
+  overflow: hidden;
+}
+nav li{
+  display: inline;
+}
+nav li a{
+  display: block;
+  color:var(--primary-color);
+  text-align: center;
+  padding:14px 16px;
+  text-decoration: none;
+}
+nav li a:hover{
+ color:var(--third-color);
+}
+/* styling main */
+h1.title{
+  font-family: 'Bitter', serif;
+}
+main{
+  padding:20px;
+}
+main img{
+  max-width: 100%;
+}
+.container{
+  position: relative;
+}
+ h2{
+  font-family: 'Bitter', serif;
+  color: var(--third-color);
+}
+.container p{
+  color: var(--third-color);
+}
+.button{
+  padding:10px;
+  text-align:center;
+  max-width: 80%;
+  color:var(--primary-color);
+  text-decoration: none;
+}
+div.upgrades{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap:5px;
+  width:95%;
+}
+div.item{
+  text-align: center;
+  color:var(--secondary-color);
+  background-color: var(--third-color);
+}
+.item img{
+  display: block;
+  margin: 0 auto;
+}
+/* Styling the footer */
+footer{
+  text-align: center;
+  font-size: 0.5em;
+  border-top:solid 1px var(--secondary-color);
+  padding-bottom: 20px;
 }

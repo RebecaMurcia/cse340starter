@@ -74,7 +74,7 @@ main{
   padding:20px;
 }
 main img{
-  width:200px;
+  width:100%;
   height: auto;
 }
 .container{
@@ -111,6 +111,8 @@ div.item{
 .item img{
   display: block;
   margin: 0 auto;
+  width:10em;
+  height: auto;
 }
 /* Styling the footer */
 footer{

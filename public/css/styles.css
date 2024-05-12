@@ -117,7 +117,7 @@ div.item{
 }
 .item img{
   display: block;
-  margin: 0 auto;
+  margin-left:30px;
   width: 50px;
   height: auto;
 }

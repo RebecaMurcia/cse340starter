@@ -155,6 +155,7 @@ footer{
  main img{
   width:50rem;
   height: auto;
+  margin-left: 40px;
 }
 div.split{
   display: flex;

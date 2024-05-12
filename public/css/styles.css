@@ -16,7 +16,7 @@ body{
   font-family: Arial, Helvetica, sans-serif;
 }
 .page{
-  max-width: 100%;
+  max-width:95%;
   background-color:var(--primary-color);
 }
 /* styling header */
@@ -64,7 +64,7 @@ nav ul{
 nav li{
 padding: 0 10px 0 10px;
 }
-nav a:hover{
+li a:hover{
  color:var(--third-color);
 }
 /* styling main */
@@ -86,7 +86,7 @@ main img{
   position: absolute;
   background-color: rgba(255, 255, 255, 0.649);
   padding: 20px;
-  margin-top:70px;
+  margin-top:10px;
 }
  h2{
   font-family: 'Bitter', serif;
@@ -102,6 +102,9 @@ a.button{
   color:var(--secondary-color);
   background-color: var(--third-color);
   text-decoration: none;
+}
+section.content{
+  margin: 20px;
 }
 div.upgrades{
   display: grid;
@@ -138,7 +141,10 @@ footer{
     height: auto;
   }
  h1.title{
-  font-size: 30px;
+  font-size:50px;
+ }
+ .container{
+  margin-top: 95px;
  }
  main img{
   width:50rem;

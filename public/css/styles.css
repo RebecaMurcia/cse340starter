@@ -27,19 +27,18 @@ body{
 }
 .siteName a{
   flex:1;
-  padding:30px;
+  padding-left:8px;
   color:var(--secondary-color);
   text-decoration: none;
-  font-size:40px;
+  font-size:20px;
   /* font-size: 2em; */
-  text-align: left;
+
 }
 #tools a{
   margin-left: auto;
-  padding: 30px;
+  padding-right: 8px;
   color:var(--secondary-color);
   text-decoration: none;
-  text-align: right;
   font-size: 1em;
 }
 /* styling navigation */
@@ -74,7 +73,6 @@ main{
   padding:20px;
 }
 main img{
-  position: relative;
   max-width: 100%;
 }
 .container{

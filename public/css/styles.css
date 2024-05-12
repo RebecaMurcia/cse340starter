@@ -79,7 +79,7 @@ main{
   padding:20px;
 }
 main img{
-  width:50rem;
+  width:20rem;
   height: auto;
 }
 .container{
@@ -139,6 +139,10 @@ footer{
  h1.title{
   font-size: 30px;
  }
+ main img{
+  width:50rem;
+  height: auto;
+}
 div.split{
   display: flex;
   flex-direction: row;

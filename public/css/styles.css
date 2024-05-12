@@ -83,9 +83,10 @@ main img{
   height: auto;
 }
 .container{
-  position: relative;
+  position: absolute;
   background-color: rgba(255, 255, 255, 0.649);
   padding: 20px;
+  margin-top:70px;
 }
  h2{
   font-family: 'Bitter', serif;
@@ -147,10 +148,11 @@ div.split{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap:10px;
 }
-/* section.content{
-  width: ;
-} */
+section.content{
+  width:30em;
+  height: auto;
+  margin: 30px;
+}
 }
   

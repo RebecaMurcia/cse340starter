@@ -81,7 +81,6 @@ main img{
   height: auto;
 }
 .container{
-  float: left;
   background-color: rgba(255, 255, 255, 0.649);
   padding: 10px;
 }
@@ -155,7 +154,7 @@ footer{
  main img{
   width:50rem;
   height: auto;
-  margin-left:30em;
+  margin-left:15em;
 }
 div.split{
   display: flex;

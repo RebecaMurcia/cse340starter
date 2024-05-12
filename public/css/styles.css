@@ -60,8 +60,8 @@ nav ul{
   /* margin:0; */
   /* padding:10px; */
 }
-nav li a{
-padding: 10px;
+nav li{
+padding: 0 10px 0 10px;
 }
 nav a:hover{
  color:var(--third-color);
@@ -74,10 +74,11 @@ main{
   padding:20px;
 }
 main img{
+  position: relative;
   max-width: 100%;
 }
 .container{
-  position: relative;
+  position: absolute;
   background-color: rgba(255, 255, 255, 0.649);
   padding: 20px;
 }

@@ -58,8 +58,6 @@ nav ul{
   width:20px;
   list-style-type: none;
   text-decoration: none;
-  /* margin:0; */
-  /* padding:10px; */
 }
 nav li{
 padding: 0 10px 0 10px;
@@ -85,8 +83,8 @@ main img{
 .container{
   position: absolute;
   background-color: rgba(255, 255, 255, 0.649);
-  padding: 20px;
-  margin-top:10px;
+  padding: 10px;
+  /* margin-top:10px; */
 }
  h2{
   font-family: 'Bitter', serif;
@@ -137,6 +135,10 @@ footer{
 @media screen and (min-width: 650px){
   body{ 
     background-image: url("../images/site/checkerboard.jpg")
+  }
+  nav ul{
+    width: 50px;
+    font-size: 1.5em;
   }
   .hero-section{
     display: flex;

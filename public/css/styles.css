@@ -25,6 +25,7 @@ body{
   justify-content: space-between;
   align-items: center;
   padding:25px;
+  background-color: var(--primary-color);
 }
 .siteName a{
   flex:1;
@@ -129,7 +130,7 @@ footer{
   }
   .hero-section{
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     width: 100%;
     height: auto;
   }

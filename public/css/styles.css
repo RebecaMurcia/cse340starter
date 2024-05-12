@@ -15,7 +15,6 @@ html{
 body{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5em;
-  /* background-image: url("../images/site/checkerboard.jpg"); */
 }
 .page{
   max-width: 100%;
@@ -27,14 +26,14 @@ body{
   justify-content: space-between;
   align-items: center;
 }
-.siteName{
+.siteName a{
   flex:1;
   padding:30px;
   color:var(--secondary-color);
   text-decoration: none;
   font-size: 2em;
 }
-#tools{
+#tools a{
   margin-left: auto;
   padding: 30px;
   color:var(--secondary-color);
@@ -46,18 +45,15 @@ nav{
  background-color: var(--secondary-color);
 }
 nav ul{
+  display: flex;
+  justify-content: space-around;
+  width:10px;
   list-style-type: none;
+  text-decoration: none;
   margin:0;
   padding: 0;
 }
-li a{
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  padding:14px 16px;
-  text-decoration: none;
-}
-nav li a:hover{
+nav ul li a:hover{
  color:var(--third-color);
 }
 /* styling main */
@@ -110,3 +106,7 @@ footer{
   background-color: var(--primary-color);
   padding-bottom: 20px;
 }
+@media screen and (max-width: 400px){
+
+}
+  /* background-image: url("../images/site/checkerboard.jpg"); */

@@ -74,7 +74,7 @@ main{
   padding:20px;
 }
 main img{
-  max-width: 100%;
+  width:200px;
   height: auto;
 }
 .container{
@@ -120,6 +120,15 @@ footer{
   padding-bottom: 20px;
 }
 @media screen and (max-width: 400px){
-
+  body{ 
+    background-image: url("../images/site/checkerboard.jpg")
+  }
+ h1.title{
+  font-size: 30px;
+ }
+div.split{
+  display: flex;
+  flex-direction: row;
 }
-  /* background-image: url("../images/site/checkerboard.jpg"); */
+}
+  

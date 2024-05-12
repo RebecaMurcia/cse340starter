@@ -107,7 +107,7 @@ div.upgrades{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap:5px;
-  /* width:40%; */
+
 }
 div.item{
   text-align: center;

@@ -81,7 +81,6 @@ main img{
   height: auto;
 }
 .container{
-  position: absolute;
   background-color: rgba(255, 255, 255, 0.649);
   padding: 10px;
 }
@@ -149,6 +148,7 @@ footer{
   font-size:50px;
  }
  .container{
+  position:absolute;
   margin-top: 95px;
  }
  main img{

@@ -29,10 +29,16 @@ body{
 }
 .siteName{
   flex:1;
-  padding: 20px;
+  padding:30px;
+  color:var(--secondary-color);
+  text-decoration: none;
+  font-size: 2em;
 }
 #tools{
   margin-left: auto;
+  padding: 30px;
+  color:var(--secondary-color);
+  text-decoration: none;
 }
 /* styling navigation */
 nav{
@@ -47,7 +53,6 @@ nav ul{
   padding: 0;
 }
 nav li a{
-  display: block;
   text-align: center;
   padding:14px 16px;
   text-decoration: none;

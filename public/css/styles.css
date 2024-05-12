@@ -78,7 +78,7 @@ main{
   padding:20px;
 }
 main img{
-  width:100%;
+  width:100px;
   height: auto;
 }
 .container{
@@ -129,6 +129,7 @@ footer{
   }
   .hero-section{
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: auto;
   }
@@ -139,6 +140,7 @@ div.split{
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap:10px;
 }
 }
   

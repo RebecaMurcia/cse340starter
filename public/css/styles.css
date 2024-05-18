@@ -49,13 +49,13 @@ nav{
  color: var(--primary-color);
  background-color: var(--secondary-color);
  display: flex;
- justify-content: space-around;
+ justify-content:center;
  align-items: center;
  font-size: 1em;
 }
 nav ul{
   display: flex;
-  justify-content: space-around;
+  justify-content:center;
   width:15px;
   list-style-type: none;
   text-decoration: none;

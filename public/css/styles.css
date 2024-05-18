@@ -17,7 +17,7 @@ body{
   font-family: Arial, Helvetica, sans-serif;
 }
 .page{
-  max-width:85%;
+  max-width:95%;
   background-color:var(--primary-color);
 }
 /* styling header */
@@ -56,12 +56,12 @@ nav{
 nav ul{
   display: flex;
   justify-content: space-around;
-  width:20px;
+  width:15px;
   list-style-type: none;
   text-decoration: none;
 }
 nav li{
-padding: 0 10px 0 10px;
+padding: 0 8px 0 8px;
 }
 li a:hover{
  color:var(--third-color);
@@ -78,7 +78,7 @@ main{
   padding:20px;
 }
 main img{
-  width:20rem;
+  width:15rem;
   height: auto;
 }
 .container{

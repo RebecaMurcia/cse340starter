@@ -3,6 +3,7 @@
   --primary-color:#fff;
   --secondary-color:rgb(0, 0, 0);
   --third-color: #388ad2;
+  --fourth-color:#7cb7eb;
 }
 html{
   box-sizing: border-box;
@@ -97,7 +98,7 @@ a.button{
   max-width: 80%;
   color:var(--secondary-color);
   font-weight:bold;
-  background-color: var(--third-color);
+  background-color: var(--fourth-color);
   text-decoration: none;
 }
 section.content{
@@ -113,7 +114,7 @@ div.upgrades{
 div.item{
   text-align: center;
   color:var(--secondary-color);
-  background-color: var(--third-color);
+  background-color: var(--fourth-color);
 }
 .item img{
   display: block;

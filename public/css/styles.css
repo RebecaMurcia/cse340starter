@@ -2,7 +2,7 @@
 :root{
   --primary-color:#fff;
   --secondary-color:rgb(0, 0, 0);
-  --third-color: #4c96d7;
+  --third-color: #388ad2;
 }
 html{
   box-sizing: border-box;
@@ -96,6 +96,7 @@ a.button{
   text-align:center;
   max-width: 80%;
   color:var(--secondary-color);
+  font-weight:bold;
   background-color: var(--third-color);
   text-decoration: none;
 }
@@ -121,7 +122,8 @@ div.item{
   height: auto;
 }
 .item a{
-  color: var(--primary-color);
+  color: var(--secondary-color);
+  font-weight: bold;
   text-decoration: none;
 }
 /* Styling the footer */

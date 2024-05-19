@@ -56,12 +56,14 @@ nav{
 nav ul{
   display: flex;
   justify-content:center;
-  width:15px;
+  /* width:15px; */
+  margin-left: 2px;
+  margin-right: 2px;
   list-style-type: none;
   text-decoration: none;
 }
 nav li{
-padding: 0 8px 0 8px;
+padding: 0 5px 0 5px;
 }
 li a:hover{
  color:var(--third-color);

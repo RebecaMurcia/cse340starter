@@ -6,3 +6,13 @@ VALUES
 UPDATE account
 SET
 account_type = 'Admin'
+
+DELETE 
+FROM
+account
+WHERE
+account_firstname = 'Tony'
+
+
+
+

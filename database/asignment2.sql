@@ -13,6 +13,19 @@ account
 WHERE
 account_firstname = 'Tony'
 
+UPDATE inventory
+SET inv_description = REPLACE( inv_description, 'small interiors','a huge interior');
 
+SELECT
+inv_make,
+inv_model,
+classification_name
+FROM
+inventory
+INNER JOIN 
+classification
+ON 
+inventory.classification_id = classification.classification_id
+WHERE classification_name = 'sport';
 
 

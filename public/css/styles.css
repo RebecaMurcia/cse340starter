@@ -46,7 +46,6 @@ body{
 }
 /* styling navigation */
 nav{
- color: var(--primary-color);
  background-color: var(--secondary-color);
  display: flex;
  justify-content:center;
@@ -60,13 +59,18 @@ nav ul{
   /* margin-left: 2px; */
   margin-right: 35px;
   list-style-type: none;
-  text-decoration: none;
 }
 nav li{
 padding: 0 5px 0 5px;
 }
+nav li a{
+  color:var(--primary-color);
+  text-decoration: none;
+
+}
 li a:hover{
- color:var(--third-color);
+ color: black;
+ background-color: var(--primary-color);
 }
 /* styling main */
 h1.title{

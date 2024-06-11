@@ -26,14 +26,10 @@ app.set("layout","./layouts/layout")//not at view root
  * Routes
  *************************/
 app.use(static)
-
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
-
-
 // //Index route ***
 app.get("/", baseController.buildHome)
-
 //Inventory Routes
 app.use("/inv", inventoryRoute)
 

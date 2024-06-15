@@ -25,4 +25,10 @@ async function getInventoryByClassificationId(classification_id) {
     }
 }
 
+/* *******************
+* a function to retrieve the data for a specific 
+vehicle in inventory, based on the inventory id 
+(this should be a single function, not a separate one for each vehicle)
+******************** */
+
 module.exports = {getClassifications, getInventoryByClassificationId};

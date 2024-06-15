@@ -6,10 +6,10 @@
  * Require Statements
  *************************/
 const express = require("express")
+const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
-const expressLayouts = require("express-ejs-layouts")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/index")
@@ -27,9 +27,8 @@ app.set("layout","./layouts/layout")//not at view root
  *************************/
 app.use(static)
 // Index route
-app.get("/", utilities.handleErrors(baseController.buildHome))
-// //Index route ***
 app.get("/", baseController.buildHome)
+
 //Inventory Routes
 app.use("/inv", inventoryRoute)
 
@@ -38,7 +37,6 @@ app.use("/inv", inventoryRoute)
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
 })
-
 
 /* ***********************
 * Express Error Handler

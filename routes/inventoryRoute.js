@@ -8,10 +8,11 @@ const utilities = require("../utilities")
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 
 //Route to build inventory item detail view
-router.get("/detail/:invId", utilities.handleErrors(invController.buildInvDetail));
+router.get("/detail/:itemId", invController.buildByItemId);
+// router.get("/detail/:invId", utilities.handleErrors(invController.buildByInvId));
 
-//Route to build error
-router.get("/error/", utilities.handleErrors(invController.errorRoute));
+// //Route to build error
+// router.get("/error/", utilities.handleErrors(invController.errorRoute));
 
 module.exports = router;
 

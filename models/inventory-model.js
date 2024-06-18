@@ -30,5 +30,16 @@ async function getInventoryByClassificationId(classification_id) {
 vehicle in inventory, based on the inventory id 
 (this should be a single function, not a separate one for each vehicle)
 ******************** */
+async function getItemById(item_id) {
+    try {
+      const data = await pool.query(
+        `SELECT * FROM public.inventory WHERE inv_id = $1`,
+        [item_id]
+      )
+      return data.rows
+    } catch (error) {
+      console.error("getItemsById error " + error)
+    }
+  }
 
-module.exports = {getClassifications, getInventoryByClassificationId};
+module.exports = {getClassifications, getInventoryByClassificationId, getItemById};

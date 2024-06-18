@@ -1,6 +1,12 @@
+<% if (title) { %>
+    <h1><% title %></h1>
+    <%} else {
+        res.redirect('/')
+    } %>
 
+    <%- messages()%>
     
-    <!-- <form class="login-state">
+    <form class="login-state" action="/account/login" method="post">
         <fieldset>
             <legend>Login</legend> 
             <label for="acount_email">Email:</label>
@@ -10,4 +16,4 @@
             <button type="submit">Login</button>
             <p>No account? <a href="/account/register">Sign-up</a></p>
         </fieldset>
-    </form>  -->
+    </form> 

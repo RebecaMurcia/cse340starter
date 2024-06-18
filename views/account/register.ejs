@@ -1,14 +1,22 @@
-
+<% if (title) { %>
+   <h1><% title %></h1>
+   <%} else {
+       res.redirect('/')
+   } %>
     
- <!-- <form> 
-    <fieldset>Register</fieldset>
+    <%- messages()%>
+
+ <form action="/account/login" method="post"> 
+    <fieldset>
+      <legend>Register</legend>
     <label for="account_firstname">First Name:</label>
-    <input type="text" id="account_firstname" name="account_firstname" value="John" required>
+    <input type="text" id="account_firstname" name="account_firstname" required>
     <label for="account_lastname">Last Name:</label>
-    <input type="text" id="account_lastname" name="account_lastname" value="Doe" required>
-    <label for="acount_email">Email:</label>
-    <input type="text" id="account_email" name="account_email" value="name@email.com" required>
+    <input type="text" id="account_lastname" name="account_lastname"required>
+    <label for="account_email">Email:</label>
+    <input type="text" id="account_email" name="account_email" required>
     <label for="account_password">Password:</label>
-    <input type="text" id="account_password" name="account_password" value="password" required>
+    <input type="text" id="account_password" name="account_password" required>
     <button type="submit">Register</button>
- </form> -->
+   </fieldset>
+ </form>

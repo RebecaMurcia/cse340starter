@@ -38,4 +38,16 @@ invCont.buildByItemId = async function (req, res, next) {
   })
 }
 
+/* **********************
+* 500 Error
+* **********************/
+invCont.AnotherError= async function (req, res, next){
+  let nav = await utilities.getNav()
+  const data = await invModel.getItemByError()
+  res.render("error"), {
+    nav
+  }
+}
+
+
 module.exports = invCont

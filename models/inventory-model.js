@@ -42,4 +42,18 @@ async function getItemById(item_id) {
     }
   }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getItemById};
+  /* ***************
+  * 5000 Error
+  ************** */
+  async function getItemByError() {
+    try {
+      const data = await pool.query(
+        `SELECT * FROM public.inventory WHERE inv_d = 1`,
+      )
+      return data.rows
+    } catch (error) {
+      console.error("getItemsById error " + error)
+    }
+  }
+  
+module.exports = {getClassifications, getInventoryByClassificationId, getItemById, getItemByError};

@@ -12,7 +12,8 @@ router.get("/detail/:itemId", invController.buildByItemId);
 // router.get("/detail/:invId", utilities.handleErrors(invController.buildByInvId));
 
 // //Route to build error
-// router.get("/error/", utilities.handleErrors(invController.errorRoute));
+router.get("/error/", utilities.handleErrors(invController.errorRoute));
+router.get("/error/", invController.AnotherError)
 
 module.exports = router;
 

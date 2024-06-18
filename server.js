@@ -53,18 +53,17 @@ app.use(static)
 app.get("/", baseController.buildHome)
 
 //Inventory Routes
-app.use("/inv", inventoryRoute)
+app.use("/inv", utilities.handleErrors(inventoryRoute))
 
 //Account routes
 // app.use("/account", accountRoute)
 // app.use("/account", requre("./routes/accountRoute"))
 
-
-
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
 })
+
 
 /* ***********************
 * Express Error Handler
@@ -73,13 +72,16 @@ app.use(async (req, res, next) => {
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav()
   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
+  if(err.status == 404) {message = err.message
+  } else {
+    message = "Oh no! There was a crash. Maybe try a differnt route?"
+  }
   res.render("errors/error", {
     title: err.status || 'Server Error',
     message: err.message,
     nav
   })
 })
-
 
 /* ***********************
  * Local Server Information

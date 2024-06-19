@@ -1,6 +1,12 @@
 
-/* @import url("https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap"); */
- 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+ :root{
+  --primary-color:white;
+  --secondary-color:#3a3a3a;
+  --accent-color1-:#4c96d7;
+  --accent-color2-:rgba(197, 234, 250, 0.668);
+
+ }
 /******* Change Box Model ***************/
 *,
 *:before,
@@ -14,11 +20,12 @@ body {
 }
  
 h1, h2 {
+  font-family:"Roboto Slab", serif;
   font-size: 1.2em;
 }
 #wrapper {
   width: 100%;
-  background-color: white;
+  background-color:var(--primary-color);
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 1em;
@@ -46,7 +53,7 @@ Header styles
 header a {
   align-self: center;
   text-decoration: none;
-  color: #3a3a3a;
+  color:var(--secondary-color);
 }
  
 .siteName {
@@ -62,8 +69,8 @@ header a {
 Nav styles
 */
 nav {
-  background-color: #3a3a3a;
-  color: white;
+  background-color: var(--secondary-color);
+  color:var(--primary-color);
 }
  
 nav ul {
@@ -74,7 +81,7 @@ nav ul {
 }
  
 nav a {
-  color: white;
+  color:var(--primary-color);
   text-decoration: none;
   font-size: 1em;
   padding-top: 1em;
@@ -127,22 +134,23 @@ main {
  
 #delorean li {
   list-style: none;
-  color: #4c96d7;
+  color: var(--accent-color1-);
 }
  
 #delorean li h2 {
   margin-top: 0;
   margin-bottom: 0;
-  color: #4c96d7;
+  color: var(--accent-color1-);
 }
  
 #delorean ul {
-  padding-left: 0;
+  padding: 10px;
   margin-top: 0;
   max-width: 200px;
   margin-left: 0.5em;
   margin-bottom: 8em;
-  background-color: rgba(225, 255, 255, 0.7);
+  border-radius: 10px;
+  background-color: var(--accent-color2-);
 }
  
 #delorean li {
@@ -172,10 +180,9 @@ main {
 }
  
 .add-col {
-  background-color: #4c96d7;
+  background-color: var(--accent-color1-);
   height: 5.5em;
   width: 95%;
-  border: #3a3a3a solid 1px;
 }
  
 a figure {
@@ -200,12 +207,11 @@ figure figcaption {
 #inv-display {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
 }
  
 #inv-display li{
-  border: 4px solid black;
-  border-radius: 20px;
+  background-color: var(--accent-color2-);
+  border-radius: 10px;
   list-style: none;
   padding: 10px;
   margin: 10px;
@@ -214,34 +220,41 @@ figure figcaption {
 #inv-display a{
   text-decoration: none;
 }
+#inv-display a:hover{
+  color:var(--accent-color1-);
+}
+
+.namePrice a{
+  color: var(--secondary-color);
+}
  
 /* Item detail */
  
 #item-display {
   margin: 5px;
   display: flex;
-  border: 2px solid black;
-  flex-direction: row;
+  border: 2px solid var(--accent-color1-);
+  flex-direction: column;
   border-radius: 5px;
 }
  
 #item_image {
+  display: flex;
+  flex-direction: column;
   border-radius: 5px;
 }
  
 .vertical-line {
-  border-left: 1px solid black;
+  border-left: 1px solid var(--accent-color1-);
   height: inherit;
 }
  
 #item-description{
-  /* border: 1px solid black;
-  border-radius: 5px; */
   padding: 5px;
 }
  
 #pswdBtn {
-  border: 2px solid #000;
+  border: 2px solid var(--accent-color1-);
   border-radius: 5px;
   padding: 2px;
   margin-top: 1em;
@@ -282,12 +295,12 @@ figure figcaption {
   }
  
   nav a:hover {
-    color: #3a3a3a;
-    background-color: #fff;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
   }
   
   #wrapper {
-    border: 5px solid #4c96d7;
+    border: 5px solid var(--accent-color1-);
     border-radius: 10px;
     margin-top: 1em;
     width: 75%;
@@ -336,20 +349,27 @@ figure figcaption {
 #add-ons, #review {
   margin-top: 0;
 }
+
+#inv-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+} 
+
 #item-display {
   display: flex;
-  border: 2px solid black;
+  border: 2px solid var(--accent-color1-);
   flex-direction: column;
   border-radius: 5px;
 }
  
 .vertical-line {
-  border-top: 1px solid black;
   height: inherit;
 }
  
 #item_image img{
-  max-width: 100%;
+  max-width:100%;
   height: auto;
 }
  

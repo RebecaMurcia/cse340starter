@@ -262,7 +262,20 @@ figure figcaption {
   width: 7em;
   text-align: center;
 }
- 
+
+/* account forms  */
+.account input{
+  background-color: white;
+}
+
+/* input form validation  */
+input:required:invalid, input:focus:invalid{
+  background-color: rgb(245, 156, 156);
+} 
+ input:required:valid{
+  background-color: rgb(211, 240, 168);
+ }
+
 @media only screen and (min-width: 768px) {
  
   body {

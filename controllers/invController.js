@@ -13,7 +13,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
     let nav = await utilities.getNav()
     const className = data[0].classification_name
     res.render("./inventory/classification", {
-        title: className + "vehicles",
+        title: `${className}` + "vehicles",
         nav,
         grid,
         errors: null,
@@ -32,11 +32,25 @@ invCont.buildByItemId = async function (req, res, next) {
   const itemModel = data[0].inv_model
   const itemYear = data[0].inv_year
   res.render("./inventory/detail", {
-    title: `${itemName} ${itemModel} ${itemYear}`,
+    title:`${itemName} ${itemModel} ${itemYear}`,
     nav,
     grid,
   })
 }
+
+/* **********************
+* Build management view
+* **********************/
+invCont.buildVehicleMngmt = async function (req,res,next){
+  let nav = await utilities.getNav()
+  res.render("inventory/management", {
+    title:"Vehicle Management",
+    nav,
+    errors: null,
+  })
+}
+
+
 
 /* **********************
 * 500 Error

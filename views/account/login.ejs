@@ -1,5 +1,5 @@
 <% if (title) { %>
-    <h1><% title %></h1>
+    <h1><%- title %></h1>
     <%} else {
         res.redirect('/')
     } %>
@@ -8,13 +8,16 @@
     
     <form class="account" action="/account/login" method="post">
         <fieldset>
-            <legend>Login</legend> 
-            <p>All fields are required</p>
+            <p>**All fields are required</p>
+            <div class="input-control">
             <label for="email">Email:</label>
             <input type="email" id="email" name="account_email" required>
+            </div>
+            <div class="input-control">
             <label for="password">Password:</label>
             <input type="password" id="password" name="account_password" required
             pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+            </div>
             <button type="submit">Login</button>
             <p>No account? <a href="/account/register">Sign-up</a></p>
         </fieldset>

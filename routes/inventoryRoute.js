@@ -14,6 +14,14 @@ router.get("/detail/:itemId", utilities.handleErrors(invController.buildByItemId
 //Route to build management view
 router.get("/management", utilities.handleErrors(invController.buildVehicleMngmt));
 
+//Route to build add-Classification view
+router.get("/add-classification", utilities.handleErrors(invController.addClassificationName));
+
+
+//Route to build add-inventory view
+router.get("/add-inventory", utilities.handleErrors(invController.buildAddInv));
+
+
 //Route to build error
 router.get("/error/", utilities.handleErrors(invController.errorRoute));
 router.get("/error/", invController.AnotherError)

@@ -1,0 +1,63 @@
+<!-- Content heading -->
+<% if (title) { %>
+    <h1><%- title %></h1>
+    <%} else {
+        res.redirect('/')
+    } %>
+
+
+<form class="account" action="/inventory/add-inventory" method="post"> 
+    <p>**All fields are required</p>
+    <div class="input-control">
+    <label for="classification">Classification</label>
+    <select id="classification" name="classification_id" required>
+        <option value="Choose" selected="selected">Choose a classification</option>
+        <option value="Custom">Custom</option>
+        <option value="Newcar">Newcar</option>
+        <option value="Sedan">Sedan</option>
+        <option value="Sport">Sport</option>
+        <option value="SUV">SUV</option>
+        <option value="Truck">Truck</option>
+    </select>    
+   </div>
+   <div class="input-control">
+    <label for="make">Make</label>
+    <input type="text" id="make" name="inv_make" value="Min of 3 characters" required>
+   </div> 
+    <div class="input-control">
+    <label for="model">Model</label>
+    <input type="text" id="model" name="inv_model" value="Min of 3 characters" required>
+    </div>
+    <div class="input-control">
+    <label for="description">Description</label>
+    <textarea rows="5" cols="10" name="inv_description" id="description"></textarea>
+   </div>
+   <div class="input-control">
+    <label for="image">Image Path</label>
+    <input type="text" id="image" name="inv_image" value="/images/vehicles/no-image.png" required>
+    </div>
+    <div class="input-control">
+        <label for="thumbnail">Thumbnail Path</label>
+        <input type="text" id="thumbnail" name="inv_thumbnail" value="/images/vehicles/ni-image.png" required>
+    </div>
+     <div class="input-control">
+        <label for="price">Price</label>
+        <div class="small"><i>decimal or integer</i></div>
+        <input type="text" id="price" name="inv_price" required>
+    </div>
+    <div class="input-control">
+        <label for="year">Year</label>
+        <div class="small"><i>4-digit year</i></div>
+        <input type="text" id="year" name="inv_year" required>
+    </div>
+    <div class="input-control">
+        <label for="miles">Miles</label>
+        <div class="small"><i>digits only</i></div>
+        <input type="text" id="miles" name="inv_miles" required>
+    </div>
+    <div class="input-control">
+        <label for="color">Color</label>
+        <input type="text" id="color" name="inv_color" required>
+    </div>     
+    <button type="submit">Register</button>
+ </form>

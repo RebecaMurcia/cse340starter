@@ -50,7 +50,59 @@ invCont.buildVehicleMngmt = async function (req,res,next){
   })
 }
 
+/* **********************
+* Build ADD CLASSIFICATION view
+* **********************/
+invCont.addClassificationName = async function (req,res,next){
+  let nav = await utilities.getNav()
+  res.render("inventory/add-classification", {
+    title:"Add Classification",
+    nav,
+    errors: null,
+  })
+}
 
+/* ******************
+Process ADD CLASSIFICATION data
+******************** */
+async function addClassificationName (req, res) {
+  let nav = await utilities.getNav()
+  const { classification_name } = req.body
+
+  const addClassResult = await invModel.addClassificationName(
+    classification_name
+  ) 
+  if (addClassResult) {
+    req.flash(
+      "notice",
+      `You've added ${classification_name}.`
+    )
+    res.status(201).render("inventory/add-classification", {
+      title: "Add Classification",
+      nav,
+    })
+  } else {
+    req.flash("notice", "Sorry, new classification couldn't be added.")
+    res.status(501).render("inventory/add-classification", {
+      title: "Add Classification",
+      nav,
+    })
+  }
+}
+
+
+
+/* **********************
+* Build ADD INVENTORY view
+* **********************/
+invCont.buildAddInv = async function (req,res,next){
+  let nav = await utilities.getNav()
+  res.render("inventory/add-inventory", {
+    title:"Add New Car",
+    nav,
+    errors: null,
+  })
+}
 
 /* **********************
 * 500 Error

@@ -98,9 +98,10 @@ nav li {
   list-style: none;
 }
  
-#messages {
+#messages, .notice {
   color: red;
 }
+
 /*
 Footer styles
 */
@@ -264,6 +265,14 @@ figure figcaption {
   font-weight: bold;
   text-align: center;
 }
+/* vehicle management view */
+.link a{
+  display: flex;
+  flex-direction:row;
+  padding-bottom:15px;
+  font-size: 16px;
+  margin-left:10px;
+}
 
 /* Form styling*/
 fieldset{
@@ -301,6 +310,13 @@ fieldset{
   padding: 10px;
   margin-bottom: 15px;
 }
+.input-control #classification, textarea{
+  margin-bottom: 15px;
+}
+.small{
+  font-size: 12px;
+  padding-bottom: 10px;
+}
 /* input form validation  */
 /* input:required:invalid, input:focus:invalid{
   background-color: rgb(245, 156, 156);
@@ -308,7 +324,9 @@ fieldset{
  input:required:valid{
   background-color: rgb(211, 240, 168);
  }
-
+.mssg{
+  padding-bottom: 15px;
+}
 
  /***************************************/
 @media only screen and (min-width: 768px) {

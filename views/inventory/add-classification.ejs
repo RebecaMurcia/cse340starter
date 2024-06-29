@@ -5,12 +5,22 @@
         res.redirect('/')
     } %>
 
- <form class="account" action="/inventory/add-classification" method="post"> 
+<%- messages()%>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+ <form class="account" action="/inv/add-classification" method="post"> 
     <p>**Field is required</p>
     <div class="input-control">
         <div class="mssg"><i>Name must be alphabetical characters only.</i></div>
     <label for="classification">Classification Name:</label>
-    <input type="text" id="classification" name="classification_name" required>
+    <input type="text" id="classification" name="classification_name" required pattern="^[a-zA-Z][a-zA-Z\s]*$">
    </div>
     <button type="submit">Add Classification</button>
  </form>

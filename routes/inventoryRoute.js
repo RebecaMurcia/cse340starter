@@ -2,7 +2,7 @@
 const express = require("express")
 const router = new express.Router()
 const invController = require("../controllers/invController")
-const regValidate = require('../utilities/inventory-validation')
+const dataValidate = require('../utilities/inventory-validation')
 const utilities = require("../utilities")
 
 
@@ -17,19 +17,26 @@ router.get("/detail/:itemId", utilities.handleErrors(invController.buildByItemId
 router.get("/management", utilities.handleErrors(invController.buildVehicleMngmt));
 
 //Route to build add-Classification view
-router.get("/add-classification", utilities.handleErrors(invController.addClassificationName));
+router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification));
 
 //Process the add new classification data
 router.post(
     "/add-classification",
-    regValidate.registrationRules(),
-    regValidate.checkClassData,
+    dataValidate.classificationRules(),
+    dataValidate.checkClassData,
     utilities.handleErrors(invController.addClassificationName)
 )
 
-
 //Route to build add-inventory view
 router.get("/add-inventory", utilities.handleErrors(invController.buildAddInv));
+
+//Process ADD NEW INVENTORY data
+router.post(
+    "/add-inventory",
+    dataValidate.inventoryRules(),
+    dataValidate.checkInvData,
+    utilities.handleErrors(invController.addInvData)
+)
 
 
 //Route to build error

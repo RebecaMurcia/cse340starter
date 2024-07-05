@@ -35,6 +35,7 @@ invCont.buildByItemId = async function (req, res, next) {
     title:`${itemName} ${itemModel} ${itemYear}`,
     nav,
     grid,
+    errors: null,
   })
 }
 
@@ -53,7 +54,7 @@ invCont.buildVehicleMngmt = async function (req,res,next){
 /* **********************
 * Build ADD CLASSIFICATION view
 * **********************/
-invCont.addClassificationName = async function (req,res,next){
+invCont.buildAddClassification = async function (req,res,next){
   let nav = await utilities.getNav()
   res.render("inventory/add-classification", {
     title:"Add Classification",
@@ -65,7 +66,7 @@ invCont.addClassificationName = async function (req,res,next){
 /* ******************
 Process ADD CLASSIFICATION data
 ******************** */
-async function addClassificationName (req, res) {
+invCont.addClassificationName = async function (req, res) {
   let nav = await utilities.getNav()
   const { classification_name } = req.body
 
@@ -77,7 +78,7 @@ async function addClassificationName (req, res) {
       "notice",
       `You've added ${classification_name}.`
     )
-    res.status(201).render("inventory/add-classification", {
+    res.status(201).render("inventory/management", {
       title: "Add Classification",
       nav,
     })
@@ -86,11 +87,10 @@ async function addClassificationName (req, res) {
     res.status(501).render("inventory/add-classification", {
       title: "Add Classification",
       nav,
+      errors: null,
     })
   }
 }
-
-
 
 /* **********************
 * Build ADD INVENTORY view
@@ -103,6 +103,39 @@ invCont.buildAddInv = async function (req,res,next){
     errors: null,
   })
 }
+
+/* ******************
+Process ADD NEW INVENTORY data
+******************** */
+invCont.addInvData = async function (req, res) {
+  let nav = await utilities.getNav()
+  const { classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color } = req.body
+  
+  const addInvResult = await invModel.addInvData(
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color
+  )
+  if (addInvResult) {
+    req.flash (
+      "notice",
+      `Congratulations! New car was added.`
+    )
+    res.status(201).render("inventory/add-inventory", {
+      title: "Add Inventory",
+      nav,
+      errors: null,
+    })
+  }
+}
+
 
 /* **********************
 * 500 Error

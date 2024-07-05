@@ -98,7 +98,7 @@ nav li {
   list-style: none;
 }
  
-#messages, .notice {
+.notice {
   color: red;
 }
 
@@ -309,6 +309,7 @@ fieldset{
   display: block;
   padding: 10px;
   margin-bottom: 15px;
+  background-color: white;
 }
 .input-control #classification, textarea{
   margin-bottom: 15px;

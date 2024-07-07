@@ -4,7 +4,17 @@
         res.redirect('/')
     } %>
 
+
 <div class="link" >
 <a href="/inv/add-classification">Add New Classification</a>
 <a href="/inv/add-inventory">Add New Vehicle</a>
 </div>
+
+<h2> Manage Inventory</h2>
+<p>Please select a classification to manage inventory items</p>
+<%- select %>
+
+<table id="inventoryDisplay"></table>
+<noscript>JavaScript must be enabled to use this page.</noscript>
+
+<script src="../../js/inventory.js"></script>

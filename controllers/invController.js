@@ -24,13 +24,19 @@ invCont.buildByClassificationId = async function (req, res, next) {
 * Build inventory item detail view
 * **********************/
 invCont.buildByItemId = async function (req, res, next) {
-  const item_id = req.params.itemId
-  const data = await invModel.getItemById(item_id)
+  //get inventory from the request
+  const inv_id = req.params.itemId
+  //use inventory id to get inventory based on id
+  const data = await invModel.getItemById(inv_id)
+  //build view with the vehicles/inventory results
   const grid = await utilities.buildItemGrid(data)
+  //get nav
   let nav = await utilities.getNav()
+  //create a title for the page
   const itemName = data[0].inv_make
   const itemModel = data[0].inv_model
   const itemYear = data[0].inv_year
+  //render page
   res.render("./inventory/detail", {
     title:`${itemName} ${itemModel} ${itemYear}`,
     nav,
@@ -40,21 +46,24 @@ invCont.buildByItemId = async function (req, res, next) {
 }
 
 /* **********************
-* Build management view
+* Build vehicle/inventory management view 
 * **********************/
 invCont.buildVehicleMngmt = async function (req,res,next){
   let nav = await utilities.getNav()
+  const select = await utilities.buildClassificationList();
+
   res.render("inventory/management", {
-    title:"Vehicle Management",
+    title:"Inventory Management",
     nav,
+    select,
     errors: null,
   })
 }
 
 /* **********************
-* Build ADD CLASSIFICATION view
+* Build ADD CLASSIFICATION form view
 * **********************/
-invCont.buildAddClassification = async function (req,res,next){
+invCont.buildAddClassification = async function (req, res, next){
   let nav = await utilities.getNav()
   res.render("inventory/add-classification", {
     title:"Add Classification",
@@ -66,27 +75,26 @@ invCont.buildAddClassification = async function (req,res,next){
 /* ******************
 Process ADD CLASSIFICATION data
 ******************** */
-invCont.addClassificationName = async function (req, res) {
-  let nav = await utilities.getNav()
+invCont.addClassificationName = async function (req, res, next) {
+  
   const { classification_name } = req.body
 
   const addClassResult = await invModel.addClassificationName(
     classification_name
   ) 
+  // let nav = await utilities.getNav()
+
   if (addClassResult) {
     req.flash(
       "notice",
-      `You've added ${classification_name}.`
+      `Classification ${classification_name} was successfully added.`
     )
-    res.status(201).render("inventory/management", {
-      title: "Add Classification",
-      nav,
-    })
+    res.status(201).redirect("./management")
   } else {
     req.flash("notice", "Sorry, new classification couldn't be added.")
     res.status(501).render("inventory/add-classification", {
       title: "Add Classification",
-      nav,
+      nav: await utilities.getNav(),
       errors: null,
     })
   }
@@ -97,9 +105,12 @@ invCont.addClassificationName = async function (req, res) {
 * **********************/
 invCont.buildAddInv = async function (req,res,next){
   let nav = await utilities.getNav()
+  let classificationSelect = await utilities.buildClassificationList()
+
   res.render("inventory/add-inventory", {
-    title:"Add New Car",
+    title:"Add New Vehicle",
     nav,
+    classificationSelect,
     errors: null,
   })
 }
@@ -108,9 +119,21 @@ invCont.buildAddInv = async function (req,res,next){
 Process ADD NEW INVENTORY data
 ******************** */
 invCont.addInvData = async function (req, res) {
-  let nav = await utilities.getNav()
-  const { classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color } = req.body
-  
+  let nav = await utilities.getNav();
+  let classificationSelect = await utilities.buildClassificationList();
+  const { 
+    classification_id, 
+    inv_make,
+    inv_model, 
+    inv_description, 
+    inv_image, 
+    inv_thumbnail, 
+    inv_price, 
+    inv_year, 
+    inv_miles, 
+    inv_color 
+  } = req.body
+  // console.log(inv_price);
   const addInvResult = await invModel.addInvData(
     classification_id,
     inv_make,
@@ -123,19 +146,75 @@ invCont.addInvData = async function (req, res) {
     inv_miles,
     inv_color
   )
+
   if (addInvResult) {
     req.flash (
       "notice",
-      `Congratulations! New car was added.`
+      `Congratulations! New vehicle was added.`
     )
-    res.status(201).render("inventory/add-inventory", {
-      title: "Add Inventory",
+    return res.status(201).render("inventory/management", {
+      title: "Inventory Management",
       nav,
       errors: null,
-    })
+      classificationSelect,
+    });
+  } else {
+    req.flash("notice","Sorry, the vehicle was not added.")
+    return res.status(501).render("inventory/add-inventory", {
+      title: "Add New Vehicle",
+      nav,
+      errors: null,
+      classificationSelect,
+    });
   }
 }
 
+/* ***************************
+ *  Return Inventory by Classification As JSON
+ * ************************** */
+invCont.getInventoryJSON = async (req, res, next) => {
+  const classification_id = parseInt(req.params.classification_id)
+  const invData = await invModel.getInventoryByClassificationId(classification_id)
+  if (invData[0].inv_id) {
+    return res.json(invData)
+  } else {
+    next(new Error("No data returned"))
+  }
+}
+
+/* ***************************
+ *  Deliver vehicle edit form view
+ * ************************** */
+invCont.editVehicleForm = async function (req, res, next) {
+  //get inventory from the request
+  const inv_id = req.params.itemId
+    //get nav
+    let nav = await utilities.getNav()
+  //use inventory id to get inventory based on id
+  const data = await invModel.getItemById(inv_id)
+  //create a title for the page
+  const title = data.inv_make + " " + data.inv_model
+  //build classification list 
+  let classificationSelect = await utilities.buildClassificationList(data.classification_id)
+  //render page
+  res.render("./inventory/edit-inventory", {
+    title: "Edit" + title,
+    nav,
+    classificationSelect: classificationSelect,
+    errors: null,
+    inv_id: data.inv_id,
+    inv_make: data.inv_make,
+    inv_model: data.inv_model,
+    inv_year: data.inv_year,
+    inv_description: data.inv_description,
+    inv_image: data.inv_image,
+    inv_thumbnail: data.inv_thumbnail,
+    inv_price: data.inv_price,
+    inv_miles: data.inv_miles,
+    inv_color: data.inv_color,
+    classification_id: data.classification_id
+  })
+}
 
 /* **********************
 * 500 Error
@@ -149,4 +228,4 @@ invCont.AnotherError= async function (req, res, next){
 }
 
 
-module.exports = invCont
+module.exports = invCont;

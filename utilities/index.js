@@ -91,7 +91,7 @@ Util.buildItemGrid = async function(data){
  
 
 /* ***********************
-Sticky input from dropdown selector
+Classification dropdown selector
 ************************* */
 Util.buildClassificationList = async function (classification_id = null) {
   let data = await invModel.getClassifications()

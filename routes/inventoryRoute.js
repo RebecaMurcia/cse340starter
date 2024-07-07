@@ -38,10 +38,16 @@ router.post(
     utilities.handleErrors(invController.addInvData)
 )
 
+//Router to get vehicles/cars for management view to update and delete
+router.get("/getInventory/:classification_id", utilities.handleErrors
+(invController.getInventoryJSON))
 
 //Route to build error
 router.get("/error/", utilities.handleErrors(invController.errorRoute));
 router.get("/error/", invController.AnotherError)
+
+//Route to build ...
+router.get("/edit/:itemId", utilities.handleErrors(invController.editVehicleForm));
 
 module.exports = router;
 

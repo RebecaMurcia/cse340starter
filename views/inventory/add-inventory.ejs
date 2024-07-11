@@ -1,21 +1,17 @@
 <!-- Content heading -->
-<% if (title) { %>
     <h1><%- title %></h1>
-    <%} else {
-        res.redirect('/')
-    } %>
+  
   <%- messages()%>
 
   <% if (errors) { %>
-      <ul class="notice">
-     <% errors.array().forEach(error => { %>
-       <li><%= error.msg %></li>
-    <%  }) %>
-     </ul>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
     <% } %>
 
-
-<form class="account" action="add-inventory" method="post"> 
+<form class="account" action="/inv/add-inventory" method="post"> 
     <p>**All fields are required</p>
     <div class="input-control">
     <label for="classification">Classification</label>
@@ -25,14 +21,14 @@
    <div class="input-control">
     <label for="make">Make</label>
     <input type="text" id="make" name="inv_make" placeholder="Min of 3 characters" 
-     pattern="^([a-zA-Z]){3}$"  
+    
      required value="<%= locals.inv_make %>">
    </div> 
 
     <div class="input-control">
     <label for="model">Model</label>
     <input type="text" id="model" name="inv_model" 
-    placeholder="Min of 3 characters"  pattern="^([a-zA-Z]){3}$" 
+    placeholder="Min of 3 characters"  
     value="<%= locals.inv_model %>" required >
     </div>
 
@@ -45,14 +41,14 @@
    <div class="input-control">
     <label for="image">Image Path</label>
     <input type="text" id="image" name="inv_image" 
-    value="/images/vehicles/no-image.jpg"<%# locals.inv_image %> >
+    value="/images/vehicles/no-image.png"<%= locals.inv_image %> >
     </div>
 
     <div class="input-control">
         <label for="thumbnail">Thumbnail Path</label>
         <input type="text" id="thumbnail" name="inv_thumbnail" 
-        value="/images/vehicles/no-image-tn.jpg" 
-        <%# locals.inv_thumbnail %> >
+        value="/images/vehicles/no-image-tn.png" 
+        <%= locals.inv_thumbnail %> >
     </div>
 
      <div class="input-control">

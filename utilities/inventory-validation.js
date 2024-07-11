@@ -27,7 +27,7 @@ const utilities = require(".")
         let nav = await utilities.getNav()
         res.render("inventory/add-classification", {
             errors, 
-            title: "Add Registration",
+            title: "Add Classification",
             nav,
             classification_name,
         })
@@ -46,13 +46,16 @@ validate.inventoryRules = () => {
         .escape()
         .notEmpty()
         .withMessage("Please select a classification."),
+       
 
         body("inv_make")
         .trim()
         .escape()
+        .isAlpha()
         .notEmpty()
-        .isLength({max:3})
+        .isLength({min:3})
         .withMessage("Please add a valid make."),
+        
 
         body("inv_model")
         .trim()
@@ -64,50 +67,43 @@ validate.inventoryRules = () => {
         body("inv_description")
         .trim()
         .escape()
-        .notEmpty()
-        .isLength({min:5})
-        .withMessage("Please write a description."),
+        .notEmpty().withMessage("Please write a description."),
 
         body("inv_image")
         .trim()
         .escape()
-        .notEmpty()
-        .withMessage("Please add an image."),
+        .notEmpty().withMessage("Please add an image."),
+        
 
         body("inv_thumbnail")
         .trim()
         .escape()
-        .notEmpty()
-        .withMessage("Please add a thumbnail."),
+        .notEmpty().withMessage("Please add a thumbnail."),
+        
 
         body("inv_price")
         .trim()
         .escape()
-        .notEmpty()
+        .notEmpty().withMessage("Please add a valid price.")
         .isLength({min: 5})
         .isCurrency()
-        .isDecimal({decimal_digits: 2})
-        .withMessage("Please add a valid price."),
+        .isDecimal({decimal_digits:2}),
 
         body("inv_year")
         .trim()
         .escape()
-        .notEmpty()
-        .isLength({max: 4})
-        .withMessage("Please add a valid year."),
+        .notEmpty().withMessage("Please add a valid year.")
+        .isLength({max:4}),
 
         body("inv_miles")
         .trim()
         .escape()
-        .notEmpty()
+        .notEmpty().withMessage("Please add a valid value")
         .isLength()
-        .isNumeric()
-        .withMessage("Please add a valid value"),
+        .isNumeric(),
 
         body("inv_color")
         .trim()
-        .escape()
-        .notEmpty()
         .isLength()
         .withMessage("Please add a valid value."),
     ]
@@ -122,9 +118,9 @@ validate.checkInvData = async (req, res, next) => {
     errors = validationResult(req)
     if (!errors.isEmpty()) {
         let nav = await utilities.getNav()
-        res.render("account/register", {
+        res.render("account/add-inventory", {
             errors,
-            title: "Add New Car",
+            title: "Add New Vehicle",
             nav,
             classification_id,
             inv_make,

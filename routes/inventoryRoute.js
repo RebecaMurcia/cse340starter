@@ -38,6 +38,9 @@ router.post(
     utilities.handleErrors(invController.addInvData)
 )
 
+/* ***************
+* Get inventory for AJAX Route
+***************** */
 //Router to get vehicles/cars for management view to update and delete
 router.get("/getInventory/:classification_id", utilities.handleErrors
 (invController.getInventoryJSON))
@@ -46,8 +49,14 @@ router.get("/getInventory/:classification_id", utilities.handleErrors
 router.get("/error/", utilities.handleErrors(invController.errorRoute));
 router.get("/error/", invController.AnotherError)
 
-//Route to build ...
+//Route to edit vehicle/inventory form 
 router.get("/edit/:itemId", utilities.handleErrors(invController.editVehicleForm));
+
+//Route to handle incoming request to edit vehicle/inventory form
+router.post("/update/", 
+    dataValidate.inventoryRules(),
+    dataValidate.checkUpdateData,
+    utilities.handleErrors(invController.updateInventory));
 
 module.exports = router;
 

@@ -21,34 +21,34 @@
    <div class="input-control">
     <label for="make">Make</label>
     <input type="text" id="make" name="inv_make" placeholder="Min of 3 characters" 
-    
+    pattern="^([a-zA-Z]){3}$"
      required value="<%= locals.inv_make %>">
    </div> 
 
     <div class="input-control">
     <label for="model">Model</label>
     <input type="text" id="model" name="inv_model" 
-    placeholder="Min of 3 characters"  
+    placeholder="Min of 3 characters"   pattern="^([a-zA-Z]){3}$"
     value="<%= locals.inv_model %>" required >
     </div>
 
     <div class="input-control">
     <label for="description">Description</label>
-    <textarea rows="5" cols="10" name="inv_description" id="description" 
-    value="<%= locals.inv_description %>"></textarea>
+    <textarea rows="5" cols="10" name="inv_description" id="description"
+    value="<%= locals.inv_description %>" required></textarea>
    </div>
 
    <div class="input-control">
     <label for="image">Image Path</label>
     <input type="text" id="image" name="inv_image" 
-    value="/images/vehicles/no-image.png"<%= locals.inv_image %> >
+    value="/images/vehicles/no-image.png"<%= locals.inv_image %> required >
     </div>
 
     <div class="input-control">
         <label for="thumbnail">Thumbnail Path</label>
         <input type="text" id="thumbnail" name="inv_thumbnail" 
         value="/images/vehicles/no-image-tn.png" 
-        <%= locals.inv_thumbnail %> >
+        <%= locals.inv_thumbnail %> required>
     </div>
 
      <div class="input-control">
@@ -77,5 +77,5 @@
         <input type="text" id="color" name="inv_color" 
         required value="<%= locals.inv_color %>">
     </div>     
-    <button type="submit">Register</button>
+    <button type="submit">Add Vehicle</button>
  </form>

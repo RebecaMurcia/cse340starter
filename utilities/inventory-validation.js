@@ -45,15 +45,17 @@ validate.inventoryRules = () => {
         .trim()
         .escape()
         .notEmpty()
+        .isLength({min: 1 })
+        .isInt()
         .withMessage("Please select a classification."),
        
 
         body("inv_make")
         .trim()
         .escape()
-        .isAlpha()
         .notEmpty()
-        .isLength({min:3})
+        .withMessage("Make value is missing")
+        .isLength({min:1})
         .withMessage("Please add a valid make."),
         
 
@@ -61,51 +63,63 @@ validate.inventoryRules = () => {
         .trim()
         .escape()
         .notEmpty()
-        .isLength({max: 3})
+        .withMessage("Model value is missing")
+        .isLength({min: 1})
         .withMessage("Please add a valid model."),
 
         body("inv_description")
         .trim()
         .escape()
-        .notEmpty().withMessage("Please write a description."),
+        .notEmpty()
+        .isLength({min: 1})
+        .withMessage("Please write a description."),
 
         body("inv_image")
         .trim()
         .escape()
-        .notEmpty().withMessage("Please add an image."),
+        .notEmpty()
+        .isLength({min: 1})
+        .withMessage("Please add an image."),
         
 
         body("inv_thumbnail")
         .trim()
         .escape()
-        .notEmpty().withMessage("Please add a thumbnail."),
+        .notEmpty()
+        .isLength({min: 1})
+        .withMessage("Please add a thumbnail."),
         
 
         body("inv_price")
         .trim()
         .escape()
-        .notEmpty().withMessage("Please add a valid price.")
-        .isLength({min: 5})
-        .isCurrency()
-        .isDecimal({decimal_digits:2}),
+        .notEmpty()
+        .withMessage("Price value is missing.")
+        .isNumeric()
+        .withMessage("Price must be a number."),
 
         body("inv_year")
         .trim()
         .escape()
-        .notEmpty().withMessage("Please add a valid year.")
-        .isLength({max:4}),
+        .notEmpty()
+        .withMessage("Year value missing.")
+        .isNumeric()
+        .withMessage("Year must be a number."),
 
         body("inv_miles")
         .trim()
         .escape()
-        .notEmpty().withMessage("Please add a valid value")
-        .isLength()
-        .isNumeric(),
+        .notEmpty()
+        .withMessage("Price value is missing.")
+        .isNumeric()
+        .withMessage("Miles must be a number."),
 
         body("inv_color")
         .trim()
-        .isLength()
-        .withMessage("Please add a valid value."),
+        .escape()
+        .notEmpty()
+        .isLength({min: 1})
+        .withMessage("Please add a color."),
     ]
 }
 
@@ -118,7 +132,7 @@ validate.checkInvData = async (req, res, next) => {
     errors = validationResult(req)
     if (!errors.isEmpty()) {
         let nav = await utilities.getNav()
-        res.render("account/add-inventory", {
+        res.render("inventory/add-inventory", {
             errors,
             title: "Add New Vehicle",
             nav,
@@ -137,5 +151,52 @@ validate.checkInvData = async (req, res, next) => {
     }
     next()
 }
+
+/* ***********************
+Check data and return errors or continue UPDATING/EDITING inventory/vehicles
+************************ */
+validate.checkUpdateData = async (req, res, next) => {
+    const {
+        inv_id, 
+        inv_make,
+        inv_model, 
+        inv_description, 
+        inv_image, 
+        inv_thumbnail, 
+        inv_price, 
+        inv_year, 
+        inv_miles, 
+        inv_color,
+        classification_id, 
+    } = req.body
+
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        let nav = await utilities.getNav()
+        const classificationSelect = await utilities.buildClassificationList(
+            classification_id)
+    const title = inv_make + " " + inv_model
+        res.render("inventory/edit-inventory", {
+            errors,
+            title: "Edit" + title,
+            nav,
+            classificationSelect,
+            inv_id,
+            inv_make,
+            inv_model,
+            inv_description,
+            inv_image,
+            inv_thumbnail,
+            inv_price,
+            inv_year,
+            inv_miles,
+            inv_color,
+        })
+        return
+    }
+    next()
+}
+
 
 module.exports = validate 

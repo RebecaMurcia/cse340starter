@@ -58,5 +58,10 @@ router.post("/update/",
     dataValidate.checkUpdateData,
     utilities.handleErrors(invController.updateInventory));
 
+//Route to delete vehicle/inventory form
+router.get("/delete/:itemId", utilities.handleErrors(invController.deleteInvConfirmation));
+router.post("/delete/", 
+    utilities.handleErrors(invController.deleteInventory));    
+
 module.exports = router;
 

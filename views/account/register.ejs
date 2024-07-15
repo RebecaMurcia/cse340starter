@@ -32,9 +32,26 @@
     <label for="password">Password:</label>
     <input type="password" id="password" name="account_password" 
     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required>
+    <span class="reveal-button active" id="passwordHide">hide password</span>
    </div>
     <div><i>Passwords must be minimum of 12 characters and include 1 capital letter, 1 number,
       and 1 special character.</i></div>
       <div id="pswdBtn">Show Password</div>
     <button type="submit">Register</button>
  </form>
+
+ <!-- Script to handle hiding and revealing password field -->
+<script>
+   const passwordInput = document.querySelector("#password");
+   const passwordHide = document.querySelector("#passwordHide");
+   passwordHide.addEventListener("click", () => {
+       if(passwordInput.getAttribute("type") == "password" ) {
+           passwordInput.setAttribute("type", "text");
+           passwordHide.classList.remove("active");
+       }
+       else {
+           passwordInput.setAttribute("type", "password");
+           passwordHide.classList.add("active");
+       }
+   })
+</script>

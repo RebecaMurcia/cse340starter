@@ -41,7 +41,7 @@ router.get("/logout", utilities.handleErrors(accountController.accountLogout));
 router.get("/update/:accountId", utilities.handleErrors(accountController.buildUpdate));
 //Process update account
 router.post(
-  "/update",
+  "/update-info",
   regValidate.updateRules(), 
   regValidate.checkUpdateData,
   utilities.handleErrors(accountController.updateAccount)

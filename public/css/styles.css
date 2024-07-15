@@ -254,7 +254,8 @@ figure figcaption {
   padding: 5px;
 }
  
-#pswdBtn {
+#pswdBtn,
+#passwordHide {
   border: 2px solid var(--accent-color1-);
   border-radius: 5px;
   padding: 2px;
@@ -287,7 +288,8 @@ fieldset{
   border-radius: 10px;
   font-size: 14px;
   }
-.account button{
+.account button,
+.button {
   padding:10px;
   border-radius: 10px;
   margin-top: 20px;

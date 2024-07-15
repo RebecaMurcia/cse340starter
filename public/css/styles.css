@@ -254,7 +254,7 @@ figure figcaption {
   padding: 5px;
 }
  
-#pswdBtn,
+
 #passwordHide {
   border: 2px solid var(--accent-color1-);
   border-radius: 5px;
@@ -266,6 +266,19 @@ figure figcaption {
   font-weight: bold;
   text-align: center;
 }
+
+#passwordHide:hover{
+  border: 2px solid green;
+  border-radius: 5px;
+  padding: 2px;
+  margin-top: 1em;
+  font-size: small;
+  width: 100%;
+  height: 25px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+} 
 /* vehicle management view */
 .link a{
   display: flex;

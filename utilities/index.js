@@ -200,7 +200,31 @@ Util.checkAuthorizationManager = (req, res, next) => {
   }
 };
 
-
+/* **************************************
+* Build new review display
+* ************************************ */
+Util.addNewReview = async function(data){
+  let review
+  if(data.length > 0) {
+      review = '<div id="item-display">'
+      data.forEach(item => {
+        review += `<div id="description">
+          <div class="vertical-line"></div>
+          <div id="item-description">
+          <h1>Customer Reviews</h1>
+          <h2>${item.review_id}</h2>
+          <p>$${new Intl.NumberFormat('en-US').format(item.review_date)}</p>
+          <p>${item.review_text}</p>
+        </div>`
+      })
+      review += '</div>'
+  }
+  else {
+      review = '<p class="notice"> Sorry, there are no reviews.</p>'
+  }
+  console.log(review)
+  return review
+}
 
  
 module.exports = Util

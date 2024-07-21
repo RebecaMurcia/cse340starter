@@ -61,7 +61,11 @@ router.post("/update/",
 //Route to delete vehicle/inventory form
 router.get("/delete/:itemId", utilities.handleErrors(invController.deleteInvConfirmation));
 router.post("/delete/", 
-    utilities.handleErrors(invController.deleteInventory));    
+    utilities.handleErrors(invController.deleteInventory));   
+    
+ //Route to process new review
+ router.post("/postedReview/",
+    utilities.handleErrors(invController.review));   
 
 module.exports = router;
 

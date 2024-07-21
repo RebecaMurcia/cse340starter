@@ -7,11 +7,13 @@
     
    <%- grid %> 
 
-
    <% if(locals.loggedin == 1) { %>
     <h1>Customer Reviews</h1>
+
+ <!-- inject new review -->
+
+    <h1>Add Your Own Review</h1>
     <form class="account" action="postedReview" method="post">
-        <p>Be the first to write a review</p>
         <div class="input-control">
         <label for="identifier">Screen Name:</label>
         <input type="text" id="identifier" name="review_id" size="10" value="<%- locals.accountData.account_firstname %>" required>

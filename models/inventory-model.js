@@ -137,6 +137,32 @@ async function deleteInvItems (
   }
 }
 
+  /* ***************
+  * Add new review
+  ************** */
+  async function addReviewData (
+    review_id, 
+    review_text,
+    inv_id,
+    account_id
+    ){
+    try {
+      const sql = `INSERT INTO public.review
+      (review_id, review_text,inv_id, account_id) 
+      VALUES ($1,$2, $3, $4) RETURNING*`
+      const data = await pool.query(sql, [
+        review_id,
+        review_text,
+        inv_id,
+        account_id
+      ]) 
+      return data.rows
+      } catch (error) {
+      return error.message
+    }
+    }  
+
+
 
   /* ***************
   * 5000 Error
@@ -154,4 +180,4 @@ async function deleteInvItems (
   
 module.exports = {getClassifications, getInventoryByClassificationId,
   getItemById, getItemByError, addClassificationName, addInvData,
-  updateInventory, deleteInvItems};
+  updateInventory, deleteInvItems, addReviewData};
